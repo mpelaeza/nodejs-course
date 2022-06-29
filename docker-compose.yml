@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+    image: 'store-web'
+    container_name: 'store-web'
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - .:/app
+  #db:
+    #ports:
+      #- "3000:3000"
+    #extra_hosts:
+      #- "host.docker.internal:host-gateway"
+    #networks:
+      #- dev-eventtia
+    #volumes:
+      #- ../.:/app
