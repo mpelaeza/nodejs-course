@@ -4,8 +4,9 @@ const cors = require('cors')
 const morgan = require('morgan')
 const helmet = require('helmet')
 
-const routerApi = require('./routes')
-const {logErrors, errorHandler, boomErrorHandler, validatorHandler} = require('./middelwares/error.handler')
+
+const routerApi = require('./src/routes')
+const {logErrors, errorHandler, boomErrorHandler, validatorHandler} = require('./src/middelwares/error.handler')
 
 const morganLevel = process.env.NODE_ENV === 'production' ? 'combined' : 'dev'
 const app = express();
