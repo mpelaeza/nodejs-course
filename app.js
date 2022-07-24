@@ -11,7 +11,9 @@ const {logErrors, errorHandler, boomErrorHandler, validatorHandler} = require('.
 const morganLevel = process.env.NODE_ENV === 'production' ? 'combined' : 'dev'
 const app = express();
 
-app.use(morgan(morganLevel));
+if(process.env.NODE_ENV !== 'test'){
+  app.use(morgan(morganLevel));
+}
 app.use(helmet());
 app.use(express.json());
 app.use(cors());

@@ -7,7 +7,7 @@ const BASE_PATH = '/api/v1/orders'
 // 1. Listen http request
 // 2. Response with valid params
 
-describe("Test categories routes", () => {
+describe("Test orders routes", () => {
   test("It should response 200 the GET method", () => {
     return request(app)
       .get(BASE_PATH)

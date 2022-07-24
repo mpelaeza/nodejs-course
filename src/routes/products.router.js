@@ -1,9 +1,7 @@
 const express = require('express');
-const ProductsService = require('../services/product.service')
 
 const ProductsController = require('../controllers/products.controller')
 const router = express.Router();
-const service = new ProductsService();
 
 // validations
 const validatorHandler = require('../middelwares/validator.handler')

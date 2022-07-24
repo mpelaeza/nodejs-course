@@ -14,7 +14,6 @@ const index = (req, res, next) => {
 const show = (req, res, next) => {
   const { id } = req.params;
   const { msg } = req.query;
-  console.log(msg)
   service.findOne(id)
     .then(({productIndex, product}) => {
       res.json(product);
