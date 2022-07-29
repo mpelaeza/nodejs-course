@@ -16,21 +16,21 @@ class CategoriesService {
 
   findOne(id){
     return new Promise((resolve, reject) => {
-      let productIndex = this.products.findIndex((x) => x.id == id);
-      let product = this.products[productIndex];
-      if(product)
-        resolve({productIndex, product} );
+      let categoryIndex = this.categories.findIndex((x) => x.id == id);
+      let category = this.categories[categoryIndex];
+      if(category)
+        resolve({categoryIndex, category} );
       else
-        reject(boom.notFound("product not found"));
+        reject(boom.notFound("category not found"));
     })
   }
 
   create(productData) {
     return new Promise((resolve, reject) => {
-      this.findOne(this.products.length )
-        .then(({productIndex, product}) => {
-          productData.id = product.id + 1;
-          this.products.push(productData);
+      this.findOne(this.categories.length )
+        .then(({categoryIndex, category}) => {
+          productData.id = category.id + 1;
+          this.categories.push(productData);
           resolve(productData);
         })
         .catch(error => {
@@ -43,13 +43,13 @@ class CategoriesService {
   update(id, productData){
     return new Promise((resolve, reject) => {
       this.findOne(id)
-        .then(({productIndex, product}) => {
-          product = {
-            ...product,
+        .then(({categoryIndex, category}) => {
+          category = {
+            ...category,
             ...productData
           };
-          this.products[productIndex] = product;
-          resolve(product);
+          this.categories[categoryIndex] = category;
+          resolve(category);
         })
         .catch(error => {
           reject(error)
@@ -61,9 +61,9 @@ class CategoriesService {
   delete(id){
     return new Promise((resolve, reject) => {
       this.findOne(id)
-        .then(({productIndex, product}) => {
-          this.products.splice(productIndex, 1);
-          resolve(product)
+        .then(({categoryIndex, category}) => {
+          this.categories.splice(categoryIndex, 1);
+          resolve(category)
         })
         .catch(error => {
           reject(error)
